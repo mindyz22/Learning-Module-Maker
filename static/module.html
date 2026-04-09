@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learner View</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Inline styles for unique Learner UI overrides without breaking Creator UI -->
+    <style>
+        .learner-quiz-header {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .learner-choice-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .learner-choice-btn:hover:not(:disabled) {
+            border-color: #bbbbbb;
+            background: #fafafa;
+        }
+        .learner-choice-btn.selected {
+            border-color: var(--primary);
+            background: #fafafa;
+        }
+        
+        .learner-choice-btn.correct {
+            border-color: #10b981;
+            background: #ecfdf5;
+            color: #065f46;
+            cursor: default;
+        }
+        .learner-choice-btn.incorrect {
+            border-color: #ef4444;
+            background: #fef2f2;
+            color: #991b1b;
+        }
+        
+        .explanation-box {
+            margin-top: 8px;
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #374151;
+            border-left: 4px solid #9ca3af;
+            display: none; /* hidden by default */
+        }
+        .explanation-box.correct { border-left-color: #10b981; }
+        .explanation-box.incorrect { border-left-color: #ef4444; }
+
+        .btn-submit-quiz {
+            margin-top: 10px;
+        }
+        
+        .btn-reveal-all {
+            margin-top: 10px;
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            font-size: 13px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .btn-reveal-all:hover {
+            background: var(--border);
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            border-radius: var(--radius);
+        }
+        figure {
+            margin: 0;
+            padding: 0;
+        }
+        figcaption {
+            margin-top: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .p-content {
+            white-space: pre-wrap; /* simple markdown support */
+            line-height: 1.6;
+            font-size: 17px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container" id="learner-container">
+        <div class="header">
+            <a href="index.html" style="color: var(--text-muted); font-size: 14px; text-decoration: none; padding: 8px; border: 1px solid var(--border); border-radius: 6px;">&larr; Back to Creator Studio</a>
+        </div>
+        <div id="loading" style="text-align:center; padding: 40px; color: #666;">Loading module...</div>
+        <div id="error-message" class="status-error" style="display:none; text-align:center;"></div>
+        
+        <div id="module-content" style="display:none;">
+            <header class="header" style="margin-bottom: 40px; margin-top: 20px;">
+                <h1 id="view-title"></h1>
+                <p id="view-description" style="font-size: 18px; line-height: 1.5; color: #444; margin-top: 12px;"></p>
+            </header>
+            <main id="view-blocks" class="blocks-container">
+                <!-- Blocks injected here -->
+            </main>
+        </div>
+    </div>
+    <script src="learner.js"></script>
+</body>
+</html>

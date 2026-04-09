@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator UI - Learning Module Maker</title>
+    <!-- Modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1>Learning Module Creator</h1>
+            <p>Design your custom learning experience.</p>
+        </header>
+
+        <main class="creator-form">
+            <section class="module-meta">
+                <div class="input-group">
+                    <label for="module-title">Module Title</label>
+                    <input type="text" id="module-title" placeholder="e.g. Introduction to Python" required>
+                </div>
+                <div class="input-group">
+                    <label for="module-description">Description</label>
+                    <textarea id="module-description" rows="2" placeholder="Briefly describe what learners will achieve..."></textarea>
+                </div>
+            </section>
+
+            <section class="blocks-container" id="blocks-container">
+                <!-- Blocks will be injected here via javascript -->
+            </section>
+
+            <section class="action-bar">
+                <button class="btn-add" data-type="text">+ Text</button>
+                <button class="btn-add" data-type="image">+ Image</button>
+                <button class="btn-add" data-type="video">+ Video</button>
+                <button class="btn-add" data-type="quiz">+ Quiz</button>
+            </section>
+
+            <div class="submit-container">
+                <button class="btn-submit" id="submit-module">Publish Module</button>
+                <span id="status-message" class="status-message"></span>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
